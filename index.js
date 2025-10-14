@@ -50,11 +50,13 @@ const checkGiftCard = async (last_characters) => {
       if (matchedCard?.note?.includes(ca_allow)) {
         return {
           giftcard_id: matchedCard.id,
+          last_characters: matchedCard.last_characters,
           allowed_country: 'CA'
         };
       } else {
         return {
           giftcard_id: matchedCard.id,
+          last_characters: matchedCard.last_characters,
           allowed_country: 'IN'
         };
       }
