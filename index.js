@@ -50,8 +50,12 @@ const checkGiftCard = async (last_characters) => {
     }
 };
 
+app.get('/', (req, res) => {
+    res.send('Gift Card API is running');
+});
+
 // Endpoint to fetch gift cards
-app.get('/api/gift-cards', async (req, res) => {
+app.post('/api/gift-cards', async (req, res) => {
     const reqBody = req.body;
     const last_characters = reqBody?.last_characters;
     if(!last_characters){
