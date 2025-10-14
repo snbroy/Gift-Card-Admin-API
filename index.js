@@ -4,13 +4,15 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+// ✅ Handle preflight requests properly
+app.options('*', cors());
 
 // Shopify App Proxy only calls GET, and Shopify expects query parameters
-app.use(cors({
-  origin: true, // allow requests from Shopify domain
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
-}));
+// app.use(cors({
+//   origin: true, // allow requests from Shopify domain
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type'],
+// }));
 
 
 app.use(express.json());
