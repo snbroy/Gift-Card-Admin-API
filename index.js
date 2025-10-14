@@ -55,7 +55,7 @@ const checkGiftCard = async (last_characters) => {
       } else {
         return {
           giftcard_id: matchedCard.id,
-          allowed_country: 'US'
+          allowed_country: 'IN'
         };
       }
     }
