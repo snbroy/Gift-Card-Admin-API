@@ -1,18 +1,25 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
 // ✅ Handle preflight requests properly
-app.options('*', cors());
+
+
+// -----------------------------
+// Middlewares
+// -----------------------------
+app.use(helmet()); // Security headers
+app.use(express.json());
 
 // Shopify App Proxy only calls GET, and Shopify expects query parameters
-// app.use(cors({
-//   origin: true, // allow requests from Shopify domain
-//   methods: ['GET', 'POST'],
-//   allowedHeaders: ['Content-Type'],
-// }));
+app.use(cors({
+  origin: true, // allow requests from Shopify domain
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
 
 
 app.use(express.json());
