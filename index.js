@@ -5,17 +5,11 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ CORS configuration
+// Shopify App Proxy only calls GET, and Shopify expects query parameters
 app.use(cors({
-  origin: [
-    'https://extensions.shopifycdn.com', // Shopify Checkout Extension domain
-    'https://admin.shopify.com',         // Shopify Admin (optional)
-    'https://*.myshopify.com',           // Your store domain (wildcard safe in dev)
-    'http://localhost:3000'              // Local dev testing
-  ],
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Shopify-Access-Token'],
-  credentials: true,
+  origin: true, // allow requests from Shopify domain
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
 }));
 
 // ✅ Handle preflight requests properly
