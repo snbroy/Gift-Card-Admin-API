@@ -46,9 +46,8 @@ const checkGiftCard = async (last_characters) => {
     console.log("matchedCard", matchedCard);
 
     if (matchedCard) {
-      const ca_allow = 'camigrated';
-      const matchedCardNote = matchedCard?.note?.toLowerCase();
-      if (matchedCardNote?.includes(ca_allow)) {
+      const ca_allow = 'CAmigrated';
+      if (matchedCard?.note?.includes(ca_allow)) {
         return {
           giftcard_id: matchedCard.id,
           last_characters: matchedCard.last_characters,
